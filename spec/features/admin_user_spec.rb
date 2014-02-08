@@ -15,5 +15,7 @@ feature 'User' do
     login_as(user, scope: :user)
     visit statuses_path
 
+    expect(page).to have_content(choice.choice1)
+    expect(page).to have_content(choice.choice2)
   end
 end

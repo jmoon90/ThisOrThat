@@ -1,15 +1,16 @@
 require 'spec_helper'
 
 feature 'user' do
-  before(:each) do 
-    FactoryGirl.create(:user)
+  let(:user) { FactoryGirl.create(:user) }
+  before(:each) do
+    login_as(user, scope: :user)
   end
   scenario 'creates choices with valid input' do
     visit new_choice_path
     fill_in 'Choice1', with: "Pepsi"
     fill_in 'Choice2', with: "Coke"
     click_on 'Submit'
-    
+
     expect(page).to have_content("You're choice is under view. Thanks for submitting")
   end
 

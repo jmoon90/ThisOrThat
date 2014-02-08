@@ -1,5 +1,9 @@
 class ChoicesController < ApplicationController
   before_filter :authenticate_user!, except: [:index]
+  def index
+    @choices = Choice.all
+  end
+
   def new
     @choice = Choice.new
   end

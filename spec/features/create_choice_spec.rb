@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 feature 'user' do
+  before(:each) do 
+    FactoryGirl.create(:user)
+  end
   scenario 'creates choices with valid input' do
     visit new_choice_path
     fill_in 'Choice1', with: "Pepsi"

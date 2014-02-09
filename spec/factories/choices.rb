@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :choice do
-    choice1 'Pepsi'
-    choice2 'Coke'
-    association :status
+    sequence(:choice1) { |n| "Pepsi#{n}" }
+    sequence(:choice2) { |n| "Coke#{n}" }
+    association :user
   end
 end

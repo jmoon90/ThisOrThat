@@ -6,6 +6,10 @@ class StatusesController < ApplicationController
   end
 
   def index
-    @choices = Choice
+    choices = Status.where(pending: true).pluck(:choice_id)
+    @choices =[]
+    choices.each do |x|
+      @choices << Choice.find(x)
+    end
   end
 end

@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates_presence_of :first_name
   validates_presence_of :last_name
+  has_many :choices,
+    inverse_of: :user
 
 
   def self.admin?

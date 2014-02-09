@@ -1,6 +1,9 @@
 <h1>Status</h1>
-
-<% @choices.each do |choice| %>
-  <%= choice.choice1  %> VS <%= choice.choice2 %>
-<% end %>
+<ol>
+  <% @choices.each do |choice| %>
+    <div class='row'>
+      <li><%= choice.choice1  %> VS <%= choice.choice2 %></li>
+    </div>
+  <% end %>
+</ol>
 

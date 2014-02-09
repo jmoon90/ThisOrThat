@@ -1,0 +1,23 @@
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to 'ThisOrThat', root_path %></h1>
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="active"><%= link_to "Cretae A Choice", new_choice_path %></li>
+      <% if current_user.admin? %>
+      <li class="has-dropdown">
+        <%= link_to "Hello #{current_user.first_name.capitalize}" %>
+        <ul class="dropdown">
+          <li><%= link_to 'Profile', edit_user_registration_path %></li>
+          <li><%= link_to 'Status', statuses_path %></li>
+        </ul>
+      </li>
+      <% end %>
+    </ul>
+  </section>
+</nav>

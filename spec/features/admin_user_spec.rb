@@ -10,15 +10,14 @@ feature 'User' do
   end
 
   scenario 'is an admin' do
-    choice = FactoryGirl.create(:choice)
-    choice2 = FactoryGirl.create(:choice, choice1: 'banana', choice2: 'apple')
-    choice2.status.update_attributes(approved: true, pending: false)
+    status = FactoryGirl.create(:status)
+    status2 = FactoryGirl.create(:status, approved: true, pending: false)
 
     user.update_attributes(admin: true)
     login_as(user, scope: :user)
     visit statuses_path
 
-    expect(page).to have_content(choice.choice1)
-    expect(page).to_not have_content(choice2.choice1)
+    expect(page).to have_content(status.choice.choice1)
+    expect(page).to_not have_content(status2.choice.choice1)
   end
 end

@@ -1,7 +1,12 @@
 class ChoicesController < ApplicationController
   before_filter :authenticate_user!, except: [:index]
   def index
-    @choices = Choice.all
+    @choices = []
+    choice = Choice.joins(:status)
+    choice.each do |x|
+      @choices << x if x.status.approved
+    end
+    @choices
   end
 
   def new

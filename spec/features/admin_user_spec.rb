@@ -2,13 +2,6 @@ require 'spec_helper'
 
 feature 'User' do
   given(:user) { FactoryGirl.create(:user) }
-  scenario 'is not an admin' do
-    login_as(user, scope: :user)
-    visit statuses_path
-
-    expect(page).to have_content("Must be an admin")
-  end
-
   scenario 'is an admin' do
     status = FactoryGirl.create(:status)
     status2 = FactoryGirl.create(:status, approved: true, pending: false)

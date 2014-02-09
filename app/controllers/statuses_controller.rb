@@ -1,7 +1,6 @@
 class StatusesController < ApplicationController
   before_filter :authenticate_user!
   before_filter do
-    flash[:notice] = "Must be an admin"
     redirect_to choices_path unless current_user.admin?
   end
 
@@ -15,11 +14,13 @@ class StatusesController < ApplicationController
 
   def update
     Choice.find(params[:id]).status.update_attributes(pending: false, approved: true)
+    flash[:notice] = "Choice accepted"
     redirect_to statuses_path
   end
 
   def destroy
     Choice.find(params[:id]).status.update_attributes(pending: false)
+    flash[:notice] = "Choice delinced"
     redirect_to statuses_path
   end
 end

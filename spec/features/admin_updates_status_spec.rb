@@ -12,8 +12,12 @@ feature 'Admin' do
   scenario 'approves choice' do
     click_on 'Approve'
     expect(page).to_not have_content(status.choice.choice1)
+    expect(page).to have_content("Choice accepted")
   end
 
   scenario 'disapproves choice' do
+    click_on 'Decline'
+    expect(page).to_not have_content(status.choice.choice1)
+    expect(page).to have_content("Choice delinced")
   end
 end

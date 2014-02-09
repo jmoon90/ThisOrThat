@@ -12,4 +12,14 @@ class StatusesController < ApplicationController
       @choices << Choice.find(x)
     end
   end
+
+  def update
+    Choice.find(params[:id]).status.update_attributes(pending: false, approved: true)
+    redirect_to statuses_path
+  end
+
+  def destroy
+    Choice.find(params[:id]).status.update_attributes(pending: false)
+    redirect_to statuses_path
+  end
 end

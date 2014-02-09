@@ -3,5 +3,5 @@ ThisOrThat::Application.routes.draw do
   root 'choices#index'
   resources :choices
 
-  resources :statuses, only: [:index]
+  resources :statuses, only: [:index, :update, :destroy]
 end

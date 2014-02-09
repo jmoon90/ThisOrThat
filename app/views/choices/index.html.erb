@@ -1,5 +1,8 @@
 <h1> Take a stand. What is the better product? </h1>
-
+<ol>
 <% @choices.each do |choice| %>
-  <%= choice.choice1  %> VS <%= choice.choice2 %>
+  <div class='row'>
+    <li><%= choice.choice1  %> VS <%= choice.choice2 %></li>
+  </div>
 <% end %>
+</ol>

@@ -11,6 +11,7 @@ class ChoicesController < ApplicationController
   def create
     @choice = Choice.new(choices_params)
     if @choice.save
+      Status.find_or_create_by_choice_id(@choice.id)
       flash[:notice] = "You're choice is under view. Thanks for submitting"
       redirect_to new_choice_path
     else

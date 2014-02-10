@@ -1,12 +1,12 @@
 class ChoicesController < ApplicationController
-  before_filter :authenticate_user!, except: [:index]
-  def index
+  before_filter :authenticate_user!, except: [:show]
+  def show
     @choices = []
-    choice = Choice.joins(:status)
-    choice.each do |x|
-      @choices << x if x.status.approved
+    approved_choices = Choice.joins(:status)
+    approved_choices.each do |choice|
+      @choices << choice if choice.status.approved
     end
-    @choices
+    @choice = @choices.shuffle.pop
   end
 
   def new

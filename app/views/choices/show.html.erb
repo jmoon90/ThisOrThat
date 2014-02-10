@@ -1,0 +1,17 @@
+<h1> Take a stand. What is the better product? </h1>
+<%= link_to vote_path(@choice), method: :put do %>
+  <div class='row'>
+    <div class='small-12 large-6 columns'>
+      <div class='panel box-size'>
+        <%= @choice.choice1 %>
+      </div>
+    </div>
+<% end %>
+<%= link_to vote_path(@choice), method: :put do %>
+    <div class='small-12 large-6 columns'>
+      <div class='panel box-size'>
+        <%= @choice.choice2 %>
+      </div>
+    </div>
+  </div>
+<% end %>

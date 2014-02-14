@@ -11,30 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209180337) do
+ActiveRecord::Schema.define(version: 20140214024633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "choices", force: true do |t|
-    t.text     "choice1",                null: false
-    t.text     "choice2",                null: false
+  create_table "options", force: true do |t|
+    t.integer  "question_id"
+    t.text     "description", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id",    default: 0, null: false
   end
 
-  add_index "choices", ["user_id"], name: "index_choices_on_user_id", using: :btree
+  add_index "options", ["question_id"], name: "index_options_on_question_id", using: :btree
+
+  create_table "questions", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",     default: 0,            null: false
+    t.text     "description", default: "ThisOrThat", null: false
+  end
+
+  add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
 
   create_table "statuses", force: true do |t|
-    t.boolean  "approved",   default: false
-    t.boolean  "pending",    default: true
-    t.integer  "choice_id"
+    t.boolean  "approved",    default: false
+    t.boolean  "pending",     default: true
+    t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "statuses", ["choice_id"], name: "index_statuses_on_choice_id", using: :btree
+  add_index "statuses", ["question_id"], name: "index_statuses_on_question_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

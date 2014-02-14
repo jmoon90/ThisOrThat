@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates_presence_of :first_name
   validates_presence_of :last_name
-  has_many :choices,
+  has_many :questions,
     inverse_of: :user
 
 

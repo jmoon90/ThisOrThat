@@ -1,0 +1,14 @@
+<h1>New Question</h1>
+
+<%= form_for @question do |f| %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <% option_count = 0 %>
+  <%= f.fields_for :options do |option| %>
+    <% option_count += 1 %>
+    <%= option.label "Option #{option_count}" %>
+    <%= option.text_field :description %>
+  <% end %>
+  <%= f.submit "Submit" %>
+<% end %>

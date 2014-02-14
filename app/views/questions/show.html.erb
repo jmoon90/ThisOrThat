@@ -1,0 +1,18 @@
+<h1><%= @question.description %></h1>
+<%= link_to votes_path, method: :post, action: :create do %>
+  <div class='row'>
+    <div class='small-12 large-6 columns'>
+      <div class='panel box-size'>
+        <%= @options.first.description %>
+      </div>
+    </div>
+<% end %>
+
+<%= link_to votes_path, method: :post, action: :create do %>
+    <div class='small-12 large-6 columns'>
+      <div class='panel box-size'>
+        <%= @options.last.description %>
+      </div>
+    </div>
+  </div>
+<% end %>

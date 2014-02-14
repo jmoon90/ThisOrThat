@@ -4,7 +4,7 @@
     <div class='row'>
   <li><%= question.options.first.description %> VS <%= question.options.last.description %></li>
       <a data-dropdown="hover1" data-options='is_hover:true' class="tiny alert round button dropdown">Sort By</a><br>
-        <ul id="hover1" class="f-dropdown" data-dropdown-content
+        <ul id="hover1" class="f-dropdown" data-dropdown-content>
           <li><%= link_to "Approve", status_path(question), method: :put %></li>
           <li><%= link_to "Decline", status_path(question), method: :delete %></li>
         </ul>

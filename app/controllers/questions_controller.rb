@@ -1,12 +1,9 @@
 class QuestionsController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
   def show
-    @questions = []
-    approved_questions = Question.joins(:status)
-    approved_questions.each do |question|
-      @questions << question if question.status.approved
-    end
-    @question = @questions.shuffle.pop
+    approved_questions = Question.approved_questions
+
+    @question = approved_questions.shuffle.pop
     @option1 = @question.options.first
     @option2 = @question.options.last
   end

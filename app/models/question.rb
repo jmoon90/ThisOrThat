@@ -6,4 +6,13 @@ class Question < ActiveRecord::Base
   has_many :options,
     inverse_of: :question
   accepts_nested_attributes_for :options
+
+  def self.approved_questions
+    @questions = []
+    approved_questions_list = Question.joins(:status)
+    approved_questions_list.each do |question|
+      @questions << question if question.status.approved
+    end
+    @questions
+  end
 end

@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   validates_presence_of :last_name
   has_many :questions,
     inverse_of: :user
+  has_many :votes,
+    inverse_of: :user
 
 
   def self.admin?

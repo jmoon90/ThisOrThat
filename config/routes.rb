@@ -1,7 +1,14 @@
 ThisOrThat::Application.routes.draw do
   devise_for :users
-  root 'choices#show'
-  resources :choices, except: [:index]
+  root 'questions#show'
+  resources :questions, shallow: true, except: [:index] do
+    resources :options
+  end
+
+#  resources :options, only: [:create] do
+#    resources :votes, only: [:create]
+#  end
+
+  resources :votes, only: [:create]
   resources :statuses, only: [:index, :update, :destroy]
-  resources :vote, only: [:update]
 end

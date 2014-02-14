@@ -5,22 +5,27 @@ class StatusesController < ApplicationController
   end
 
   def index
-    choices = Status.where(pending: true).pluck(:choice_id)
-    @choices =[]
-    choices.each do |x|
-      @choices << Choice.find(x)
+    questions = Status.where(pending: true).pluck(:question_id)
+    @questions =[]
+    questions.each do |x|
+      @questions << Question.find(x)
     end
   end
 
   def update
-    Choice.find(params[:id]).status.update_attributes(pending: false, approved: true)
-    flash[:notice] = "Choice accepted"
+    Question.find(params[:id]).status.update_attributes(pending: false, approved: true)
+    flash[:notice] = "Question accepted"
     redirect_to statuses_path
   end
 
   def destroy
-    Choice.find(params[:id]).status.update_attributes(pending: false)
-    flash[:notice] = "Choice delinced"
+    Question.find(params[:id]).status.update_attributes(pending: false)
+    flash[:notice] = "Question declined"
     redirect_to statuses_path
+  end
+
+  private
+
+  def status_params
   end
 end

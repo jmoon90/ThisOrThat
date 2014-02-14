@@ -17,3 +17,21 @@
 .box-size {
   height: 12em;
 }
+
+.red {
+  padding: 7rem !important;
+  background-color: #cc2323 !important;
+  text-align: center;
+  color: #fff;
+}
+
+.blue {
+  padding: 7rem !important;
+  background-color: #6dccf2 !important;
+  text-align: center;
+  color: #fff;
+}
+
+.fsize {
+  font-size: 22px;
+}

@@ -7,7 +7,8 @@ class QuestionsController < ApplicationController
       @questions << question if question.status.approved
     end
     @question = @questions.shuffle.pop
-    @options = @question.options
+    @option1 = @question.options.first
+    @option2 = @question.options.last
   end
 
   def new

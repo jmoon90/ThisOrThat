@@ -1,17 +1,17 @@
 <h1><%= @question.description %></h1>
-<%= link_to votes_path, method: :post, action: :create do %>
+<%= link_to option_votes_path(@option1), method: :post, action: :create do %>
   <div class='row'>
     <div class='small-12 large-6 columns'>
       <div class='panel box-size'>
-        <%= @options.first.description %>
+        <%= @option1.description %>
       </div>
     </div>
 <% end %>
 
-<%= link_to votes_path, method: :post, action: :create do %>
+<%= link_to option_votes_path(@option2), method: :post, action: :create do %>
     <div class='small-12 large-6 columns'>
       <div class='panel box-size'>
-        <%= @options.last.description %>
+        <%= @option2.description %>
       </div>
     </div>
   </div>

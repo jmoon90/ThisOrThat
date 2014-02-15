@@ -51,6 +51,15 @@ test:
   username:
   password:
 
+staging:
+  adapter: postgresql
+  encoding: unicode
+  database: ThisOrThat_staging
+  pool: 5
+  username:
+  password:
+
+
 production:
   adapter: postgresql
   encoding: unicode

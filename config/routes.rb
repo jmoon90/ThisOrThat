@@ -1,8 +1,6 @@
 ThisOrThat::Application.routes.draw do
   devise_for :users
-
   root 'questions#show'
-
   resources :questions, shallow: true, except: [:index] do
     resources :options
   end

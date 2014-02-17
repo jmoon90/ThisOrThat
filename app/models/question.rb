@@ -13,6 +13,6 @@ class Question < ActiveRecord::Base
     approved_questions_list.each do |question|
       @questions << question if question.status.approved
     end
-    @questions
+    @questions.shuffle.pop
   end
 end

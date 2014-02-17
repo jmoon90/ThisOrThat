@@ -1,5 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
+config.assets.initialize_on_precompile = true
 # Pick the frameworks you want:
 require "active_record/railtie"
 require "action_controller/railtie"
@@ -26,3 +27,4 @@ module ThisOrThat
     # config.i18n.default_locale = :de
   end
 end
+

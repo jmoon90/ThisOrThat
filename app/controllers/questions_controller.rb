@@ -2,6 +2,10 @@ class QuestionsController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
   def show
     @question =  Question.approved_questions
+    if @question != nil
+      @option1 = @question.options.first
+      @option2 = @question.options.last
+    end
   end
 
   def new

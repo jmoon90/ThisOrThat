@@ -9,14 +9,12 @@ class StatusesController < ApplicationController
   end
 
   def update
-binding.pry
     Question.find(params[:id]).status.update_attributes(pending: false, approved: true)
     flash[:notice] = "Question accepted"
     redirect_to statuses_path
   end
 
   def destroy
-binding.pry
     Question.find(params[:id]).status.update_attributes(pending: false)
     flash[:notice] = "Question declined"
     redirect_to statuses_path

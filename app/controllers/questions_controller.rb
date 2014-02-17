@@ -1,11 +1,6 @@
 class QuestionsController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
   def show
-    approved_questions = Question.approved_questions
-
-    @question = approved_questions.shuffle.pop
-    @option1 = @question.options.first
-    @option2 = @question.options.last
   end
 
   def new

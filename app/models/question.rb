@@ -2,9 +2,11 @@ class Question < ActiveRecord::Base
   belongs_to :user,
     inverse_of: :questions
   has_one :status,
-    inverse_of: :question
+    inverse_of: :question,
+    dependent: :destroy
   has_many :options,
-    inverse_of: :question
+    inverse_of: :question,
+    dependent: :destroy
   accepts_nested_attributes_for :options
 
   def self.approved_questions

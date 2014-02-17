@@ -1,5 +1,9 @@
 class QuestionsController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
+  def index
+    @questions = Question.all
+  end
+
   def show
     @question =  Question.approved_questions
     if @question != nil
@@ -24,6 +28,12 @@ class QuestionsController < ApplicationController
       flash[:notice] = "Invalid input. Please try again"
       render :new
     end
+  end
+
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    redirect_to questions_path
   end
 
   private

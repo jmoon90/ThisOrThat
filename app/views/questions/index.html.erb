@@ -1,0 +1,11 @@
+<h1>All quesitons </h1>
+<ol>
+<% @questions.each do |question| %>
+  <li>
+    <%= question.description %>
+    <%=link_to "delete", question_path(question), method: :delete,
+confirm: "Are you sure?" %>
+  </li>
+  
+<% end %>
+</ol>

@@ -12,7 +12,8 @@ csv = CSV.parse(csv_text, headers: true)
 csv.each do |row|
   info = row.to_hash
   question = Question.create!(description: "#{info["Question"]}")
-  Status.create!(question_id: question.id, approved: "#{info["approved"]}")
+  Status.create!(question_id: question.id, approved:
+"#{info["approved"]}", pending: false)
   question.save
   option1 = Option.create!(description: "#{info["Option1"]}", question_id: question.id)
   option2 = Option.create!(description: "#{info["Option2"]}", question_id: question.id)

@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
     if @question.save
       Status.find_or_create_by_question_id(@question.id)
       flash[:notice] = "You're question is under view. Thanks for submitting"
-      redirect_to new_question_path
+      redirect_to root_path
     else
       flash[:notice] = "Invalid input. Please try again"
       render :new
